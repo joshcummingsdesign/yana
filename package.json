@@ -1,0 +1,28 @@
+{
+  "name": "yana",
+  "version": "1.0.0",
+  "description": "Yana - Yet another notes app. Built with AngularFire.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshcummingsdesign/yana.git"
+  },
+  "author": "Josh Cummings <hello@joshcummingsdesign.com> (http://joshcummingsdesign.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshcummingsdesign/yana/issues"
+  },
+  "homepage": "https://github.com/joshcummingsdesign/yana#readme",
+  "dependencies": {
+    "angular": "1.5.7",
+    "angular-route": "1.5.7",
+    "express": "4.14.0"
+  },
+  "devDependencies": {
+    "webpack": "1.13.1"
+  }
+}
