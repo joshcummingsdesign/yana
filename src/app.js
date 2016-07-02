@@ -10,5 +10,6 @@ require('./routes');
 require('./controllers/home.js');
 require('./controllers/register.js');
 require('./controllers/sign-in.js');
-require('./controllers/password.js');
+require('./controllers/reset.js');
+require('./controllers/account.js');
 require('./controllers/main.js');

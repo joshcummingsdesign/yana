@@ -1,6 +1,6 @@
 angular.module('yana')
 
-  .config(function($routeProvider) {
+  .config(function($routeProvider, $locationProvider) {
 
     $routeProvider
 
@@ -19,14 +19,21 @@ angular.module('yana')
         controller: 'signInCtrl'
       })
 
-      .when('/password-reset', {
-        templateUrl: 'views/password-reset.html',
-        controller: 'passwordCtrl'
+      .when('/reset', {
+        templateUrl: 'views/reset.html',
+        controller: 'resetCtrl'
+      })
+
+      .when('/account', {
+        templateUrl: 'views/account.html',
+        controller: 'accountCtrl'
       })
 
       .when('/notes', {
         templateUrl: 'views/notes.html',
         controller: 'mainCtrl'
       });
+
+      $locationProvider.html5Mode(true);
 
   });
