@@ -1,4 +1,4 @@
-angular.module('supaHot')
+angular.module('yana')
 
   .controller('mainCtrl', function($scope) {
 
