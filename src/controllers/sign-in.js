@@ -1,6 +1,6 @@
 angular.module('yana')
 
-  .controller('loginCtrl', function($scope) {
+  .controller('signInCtrl', function($scope) {
 
     $scope.login = function() {
 
