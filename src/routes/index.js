@@ -26,12 +26,22 @@ angular.module('yana')
 
       .when('/account', {
         templateUrl: 'views/account.html',
-        controller: 'authCtrl'
+        controller: 'authCtrl',
+        resolve: {
+          protect: function(authService){
+            return authService.protect();
+          }
+        }
       })
 
       .when('/notes', {
         templateUrl: 'views/notes.html',
-        controller: 'mainCtrl'
+        controller: 'mainCtrl',
+        resolve: {
+          protect: function(authService){
+            return authService.protect();
+          }
+        }
       })
 
       .otherwise({redirectTo: '/'});
