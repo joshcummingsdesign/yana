@@ -1,11 +1,13 @@
 <!-- Account View -->
 <a href="/">Yana</a>
 <h2>Account</h2>
-<form ng-submit="accountSave()">
+<form ng-submit="updateAccount()">
   <label for="email">Email</label>
-  <input ng-model="account.email" id="email" type="text" name="email" placeholder="Email" required>
-  <label for="account.password">Password</label>
-  <input ng-model="password" id="password" type="password" name="password" placeholder="Password" required>
+  <input ng-model="account.email" id="email" type="text" placeholder="Email">
+  <label for="password">Password</label>
+  <input ng-model="account.password" id="password" type="password" placeholder="Password">
   <input type="submit" value="Save">
 </form>
+<a ng-click="signOut()" href="">Sign Out</a>
+<a ng-click="deleteAccount()" href="">Delete Account</a>
 <a href="/notes">Back</a>

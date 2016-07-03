@@ -32,7 +32,9 @@ angular.module('yana')
       .when('/notes', {
         templateUrl: 'views/notes.html',
         controller: 'mainCtrl'
-      });
+      })
+
+      .otherwise({redirectTo: '/'});
 
       $locationProvider.html5Mode(true);
 
