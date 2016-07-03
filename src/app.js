@@ -5,6 +5,7 @@ require('./database');
 
 // Factories
 require('./factories/auth.js');
+require('./factories/routeHelper.js');
 
 // Controllers
 require('./controllers/auth.js');

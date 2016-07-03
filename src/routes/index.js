@@ -6,7 +6,12 @@ angular.module('yana')
 
       .when('/', {
         templateUrl: 'views/home.html',
-        controller: 'authCtrl'
+        controller: 'authCtrl',
+        resolve: {
+          direct: function(routeHelper) {
+            return routeHelper.direct('/notes');
+          }
+        }
       })
 
       .when('/register', {
@@ -28,8 +33,8 @@ angular.module('yana')
         templateUrl: 'views/account.html',
         controller: 'authCtrl',
         resolve: {
-          protect: function(authService){
-            return authService.protect();
+          protect: function(routeHelper) {
+            return routeHelper.protect();
           }
         }
       })
@@ -38,8 +43,8 @@ angular.module('yana')
         templateUrl: 'views/notes.html',
         controller: 'mainCtrl',
         resolve: {
-          protect: function(authService){
-            return authService.protect();
+          protect: function(routeHelper) {
+            return routeHelper.protect();
           }
         }
       })

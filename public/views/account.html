@@ -1,9 +1,12 @@
 <!-- Account View -->
 <a href="/">Yana</a>
 <h2>Account</h2>
-<form ng-submit="updateAccount()">
+<form ng-submit="updateEmail()">
   <label for="email">Email</label>
   <input ng-model="account.email" id="email" type="text" placeholder="Email">
+  <input type="submit" value="Save">
+</form>
+<form ng-submit="updatePassword()">
   <label for="password">Password</label>
   <input ng-model="account.password" id="password" type="password" placeholder="Password">
   <input type="submit" value="Save">

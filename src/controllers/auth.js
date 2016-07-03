@@ -1,15 +1,28 @@
 angular.module('yana')
 
-  .controller('authCtrl', function($scope, $location, $firebaseAuth) {
+  .controller('authCtrl', function($scope, $location, Auth) {
 
-    var auth = $firebaseAuth();
+
+    $scope.register = function() {
+
+      var email = $scope.account.email;
+      var pass  = $scope.account.password;
+
+      Auth.$createUserWithEmailAndPassword(email, pass).then(function(user) {
+        $location.path('/notes');
+      }).catch(function(error) {
+        console.log(error.message);
+      });
+
+    };
+
 
     $scope.signIn = function() {
 
       var email = $scope.account.email;
       var pass  = $scope.account.password;
 
-      auth.$signInWithEmailAndPassword(email, pass).then(function(user) {
+      Auth.$signInWithEmailAndPassword(email, pass).then(function(user) {
         $location.path('/notes');
       }).catch(function(error) {
         console.log(error.message);
@@ -20,22 +33,8 @@ angular.module('yana')
 
     $scope.signOut = function() {
 
-      auth.$signOut();
+      Auth.$signOut();
       $location.path('/');
-
-    };
-
-
-    $scope.register = function() {
-
-      var email = $scope.account.email;
-      var pass  = $scope.account.password;
-
-      auth.$createUserWithEmailAndPassword(email, pass).then(function(user) {
-        $location.path('/notes');
-      }).catch(function(error) {
-        console.log(error.message);
-      });
 
     };
 
@@ -44,7 +43,7 @@ angular.module('yana')
 
       var email = $scope.account.email;
 
-      auth.$sendPasswordResetEmail(email).then(function() {
+      Auth.$sendPasswordResetEmail(email).then(function() {
         console.log("Password reset email sent successfully!");
       }).catch(function(error) {
         console.log(error.message);
@@ -53,26 +52,27 @@ angular.module('yana')
     };
 
 
-    $scope.updateAccount = function() {
-
-      if ($scope.account === undefined || (!$scope.account.email && !$scope.account.password)) {
-        console.log('No changes made.');
-        return;
-      }
+    $scope.updateEmail = function() {
 
       var email = $scope.account.email;
-      var pass  = $scope.account.password;
 
       if (email) {
-        auth.$updateEmail(email).then(function() {
+        Auth.$updateEmail(email).then(function() {
           console.log("Email changed successfully!");
         }).catch(function(error) {
           console.log(error.message);
         });
       }
 
+    };
+
+
+    $scope.updatePassword = function() {
+
+      var pass = $scope.account.password;
+
       if (pass) {
-        auth.$updatePassword(pass).then(function() {
+        Auth.$updatePassword(pass).then(function() {
           console.log("Password changed successfully!");
         }).catch(function(error) {
           console.log(error.message);
@@ -84,7 +84,7 @@ angular.module('yana')
 
     $scope.deleteAccount = function() {
 
-      auth.$deleteUser().then(function() {
+      Auth.$deleteUser().then(function() {
         console.log("Deleted user!");
         $location.path('/');
       }).catch(function(error) {
