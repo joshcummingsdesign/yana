@@ -6,27 +6,27 @@ angular.module('yana')
 
       .when('/', {
         templateUrl: 'views/home.html',
-        controller: 'homeCtrl'
+        controller: 'authCtrl'
       })
 
       .when('/register', {
         templateUrl: 'views/register.html',
-        controller: 'registerCtrl'
+        controller: 'authCtrl'
       })
 
       .when('/sign-in', {
         templateUrl: 'views/sign-in.html',
-        controller: 'signInCtrl'
+        controller: 'authCtrl'
       })
 
       .when('/reset', {
         templateUrl: 'views/reset.html',
-        controller: 'resetCtrl'
+        controller: 'authCtrl'
       })
 
       .when('/account', {
         templateUrl: 'views/account.html',
-        controller: 'accountCtrl'
+        controller: 'authCtrl'
       })
 
       .when('/notes', {

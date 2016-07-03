@@ -1,4 +1,4 @@
-angular.module('yana', ['ngRoute']);
+angular.module('yana', ['ngRoute', 'firebase']);
 
 // Database
 require('./database');
@@ -7,9 +7,5 @@ require('./database');
 require('./routes');
 
 // Controllers
-require('./controllers/home.js');
-require('./controllers/register.js');
-require('./controllers/sign-in.js');
-require('./controllers/reset.js');
-require('./controllers/account.js');
+require('./controllers/auth.js');
 require('./controllers/main.js');
