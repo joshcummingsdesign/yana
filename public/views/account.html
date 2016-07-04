@@ -11,6 +11,7 @@
   <input ng-model="account.password" id="password" type="password" required placeholder="Password">
   <input type="submit" value="Save">
 </form>
+<p>{{ success.message }}</p>
 <p>{{ error.message }}</p>
 <a ng-click="signOut()" href="">Sign Out</a>
 <a ng-click="deleteAccount()" href="">Delete Account</a>

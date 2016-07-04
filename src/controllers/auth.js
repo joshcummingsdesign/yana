@@ -3,9 +3,11 @@ angular.module('yana')
   .controller('authCtrl', function($scope, $location, Auth) {
 
     // TODO: Check for network errors
-    $scope.error = {};
+    // TODO: Add loader UI
 
     $scope.register = function() {
+
+      $scope.error = {};
 
       var email = $scope.account.email;
       var pass  = $scope.account.password;
@@ -36,6 +38,8 @@ angular.module('yana')
 
     $scope.signIn = function() {
 
+      $scope.error = {};
+
       var email = $scope.account.email;
       var pass  = $scope.account.password;
 
@@ -65,6 +69,8 @@ angular.module('yana')
 
     $scope.signOut = function() {
 
+      // TODO: Create success message
+
       Auth.$signOut();
       $location.path('/');
 
@@ -73,10 +79,15 @@ angular.module('yana')
 
     $scope.resetPassword = function() {
 
+      // TODO: Customize reset email
+
+      $scope.error   = {};
+      $scope.success = {};
+
       var email = $scope.account.email;
 
       Auth.$sendPasswordResetEmail(email).then(function() {
-        console.log("Password reset email sent successfully!");
+        $scope.success.message = "Password reset email sent successfully!";
       }).catch(function(error) {
         switch(error.code) {
           case 'auth/invalid-email':
@@ -96,14 +107,20 @@ angular.module('yana')
     $scope.updateEmail = function() {
 
       if ($scope.account) {
+
+        $scope.error   = {};
+        $scope.success = {};
+
         var email = $scope.account.email;
+
         if (email) {
           Auth.$updateEmail(email).then(function() {
-            console.log("Email changed successfully!");
+            $scope.success.message = "Email changed successfully!";
           }).catch(function(error) {
             $scope.error.message = 'Invalid email address.';
           });
         }
+
       }
 
     };
@@ -112,10 +129,15 @@ angular.module('yana')
     $scope.updatePassword = function() {
 
       if ($scope.account) {
+
+        $scope.error   = {};
+        $scope.success = {};
+
         var pass = $scope.account.password;
+
         if (pass) {
           Auth.$updatePassword(pass).then(function() {
-            console.log("Password changed successfully!");
+            $scope.success.message = "Password changed successfully!";
           }).catch(function(error) {
             switch(error.code) {
               case 'auth/weak-password':
@@ -126,6 +148,7 @@ angular.module('yana')
             }
           });
         }
+
       }
 
     };
@@ -134,9 +157,11 @@ angular.module('yana')
     $scope.deleteAccount = function() {
 
       // TODO: Add an are you sure confirmation
+      // TODO: Create success message
+
+      $scope.error   = {};
 
       Auth.$deleteUser().then(function() {
-        console.log("Deleted user!");
         $location.path('/');
       }).catch(function(error) {
         $scope.error.message = 'There was an issue handling your request.';
