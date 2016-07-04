@@ -3,14 +3,15 @@
 <h2>Account</h2>
 <form ng-submit="updateEmail()">
   <label for="email">Email</label>
-  <input ng-model="account.email" id="email" type="text" placeholder="Email">
+  <input ng-model="account.email" id="email" type="text" required placeholder="Email">
   <input type="submit" value="Save">
 </form>
 <form ng-submit="updatePassword()">
   <label for="password">Password</label>
-  <input ng-model="account.password" id="password" type="password" placeholder="Password">
+  <input ng-model="account.password" id="password" type="password" required placeholder="Password">
   <input type="submit" value="Save">
 </form>
+<p>{{ error.message }}</p>
 <a ng-click="signOut()" href="">Sign Out</a>
 <a ng-click="deleteAccount()" href="">Delete Account</a>
 <a href="/notes">Back</a>
