@@ -4,31 +4,29 @@ var runSequence = require('run-sequence');
 var nodemon     = require('gulp-nodemon');
 var webpack     = require('webpack-stream');
 var browserSync = require('browser-sync');
+var reload      = browserSync.reload;
 
-gulp.task('browser-sync', ['nodemon'], function() {
-  browserSync.init(null, {
-    proxy: 'http://localhost:3000',
-    port: 8080
+gulp.task('browser-sync', function() {
+  browserSync.init({
+    proxy: 'localhost:3000',
+    port: 8000
   });
 });
 
-gulp.task('nodemon', function(cb) {
+gulp.task('nodemon', function() {
   var started = false;
-  return nodemon({
-    script: 'server.js'
-  }).on('start', function() {
-    // avoid starting nodemon multiple times
-    if (!started) {
-      cb();
-      started = true;
-    }
+  nodemon({
+    script: 'server.js',
+    ignore: [
+      'node_modules/**/*.js',
+      'public/**/*.js',
+      'src/**/*.js',
+      'gulpfile.js',
+      'package.json',
+      'webpack.config.js'
+    ]
   });
 });
-
-// TODO: This gets nodemon and browsersync running
-// TODO: at the same time, need to trigger
-// TODO: Browsersync reloads on html changes
-// TODO: And webpack builds on js changes
 
 gulp.task('webpack', function() {
   return gulp.src('src/app.js')
@@ -36,4 +34,10 @@ gulp.task('webpack', function() {
     .pipe(gulp.dest('public/scripts/'));
 });
 
-gulp.task('watch', ['browser-sync'], function() {});
+gulp.task('webpack-watch', ['webpack'], reload);
+
+gulp.task('watch', function(){
+  runSequence('nodemon', 'browser-sync');
+  gulp.watch('public/**/*.html').on('change', reload);
+  gulp.watch('src/**/*.js', ['webpack-watch']);
+});

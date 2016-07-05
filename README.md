@@ -2,5 +2,8 @@
 Yana - Yet another notes app. Built with AngularFire.
 
 1. Run `npm install`
-2. Run `webpack --watch` in one terminal window
-3. Run `nodemon` in another terminal window
+2. Run `gulp watch`
+
+## Dependencies
+* node 5.11.1
+* npm 3.8.6

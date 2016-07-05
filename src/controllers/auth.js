@@ -5,8 +5,6 @@ angular.module('yana')
     // TODO: Check for network errors
     // TODO: Add loader UI
 
-    console.log('hello');
-
     $scope.register = function() {
 
       $scope.error = {};
