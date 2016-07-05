@@ -99,7 +99,6 @@ gulp.task('watch', function(){
   );
   gulp.watch('public/**/*.html').on('change', reload);
   gulp.watch(['src/**/*.js', '!src/assets/**/*.js'], ['webpack-watch']);
-  gulp.watch(['src/assets/**/*.js'], ['js-watch']);
   gulp.watch('src/assets/styles/**/*.scss', ['sass']);
   watch('src/assets/images/*', function() {
     gulp.start('images');
