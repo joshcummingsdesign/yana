@@ -21,6 +21,10 @@
     "express": "4.14.0"
   },
   "devDependencies": {
-    "webpack": "1.13.1"
+    "browser-sync": "2.13.0",
+    "gulp": "3.9.1",
+    "gulp-nodemon": "2.1.0",
+    "run-sequence": "1.2.2",
+    "webpack-stream": "3.2.0"
   }
 }
