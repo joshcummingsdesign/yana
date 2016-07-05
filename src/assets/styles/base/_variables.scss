@@ -2,8 +2,6 @@
 =            Variables            =
 =================================*/
 
-
-
 // Colors
 $theme-color: #47aa5d;
 $light-grey: #cdcdcd;
@@ -28,14 +26,6 @@ $serif: serif;
 $sans-serif: sans-serif;
 $font: $serif;
 $headline: $sans-serif;
-
-// Typography  ! This should be used in conjunction with the font-size() @mixin ¡
-$h1: 48px;
-$h2: 42px;
-$h3: 36px;
-$h4: 28px;
-$h5: 24px;
-$h6: 18px;
 
 // Default Spacing
 $space: 30px;
