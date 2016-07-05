@@ -53,12 +53,11 @@ h6 { @include font-size($h6); }
 
 a {
 	color: $theme-color;
-	transition: color 0.3s ease-out;
+	transition: color 0.3s ease-in-out;
 	text-decoration: none;
 
 	&:hover {
 		color: darken($theme-color, 10%);
-		transition: color 0.3s ease-in;
 	}
 
 }
