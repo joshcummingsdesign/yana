@@ -37,8 +37,9 @@ $h4: 28px;
 $h5: 24px;
 $h6: 18px;
 
-// Default Spacing 
+// Default Spacing
 $space: 30px;
 
 // Easing
-$easing: cubic-bezier(0.68,-0.55, 0.43, 1.46);
+$time: 0.3s;
+$easing: ease-in-out;

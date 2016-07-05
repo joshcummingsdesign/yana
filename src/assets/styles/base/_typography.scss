@@ -25,7 +25,7 @@ body {
 /*----------  Headings  ----------*/
 
 @for $i from 1 through 6 {
-	
+
 	h#{$i} {
 		font-weight: normal;
 		font-family: $headline;
@@ -53,8 +53,8 @@ h6 { @include font-size($h6); }
 
 a {
 	color: $theme-color;
-	transition: color 0.3s ease-in-out;
 	text-decoration: none;
+	transition: color $time $easing;
 
 	&:hover {
 		color: darken($theme-color, 10%);
