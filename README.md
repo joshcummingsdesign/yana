@@ -7,8 +7,7 @@ Yana - Yet another notes app. Built with AngularFire.
 
 ## Getting Started
 1. Run `npm install`
-2. Run `gulp`
-3. Run `gulp watch`
+2. Run `gulp watch`
 
 ## Sourcemaps
 1. Open Chrome Dev Tools
