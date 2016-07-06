@@ -28,11 +28,12 @@ Yana - Yet another notes app. Built with AngularFire.
 * Gulp compiles all images to `public/images`
 
 ## AngularJS
-* All AngularJS gets compiled by webpack using the `require` statement in `src/app.js`
+* All AngularJS gets compiled by webpack using `require` statements in `src/app.js`
 * Gulp comiples all webpack js to `public/styles/app.bundle.js`
 
 ## Bower
-* After installing a dependency with bower, run `gulp bower` to compile automatically
+* After installing a dependency with bower, add the files you need to overrides in bower.json
+* Run `gulp bower` to compile vendor assets automatically
 * All js files in overrides in bower.json get compiled to `src/assets/scripts/vendor`
 * Gulp compiles all bower js to `public/styles/vendor.bundle.js`
 * All css and sass files in overrides in bower.json get compiled to `src/assets/styles/vendor`
