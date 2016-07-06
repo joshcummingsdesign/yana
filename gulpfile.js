@@ -1,17 +1,23 @@
-var gulp         = require('gulp');
-var exec         = require('child_process').exec;
-var del          = require('del');
-var runSequence  = require('run-sequence');
-var watch        = require('gulp-watch');
-var browserSync  = require('browser-sync');
-var reload       = browserSync.reload;
-var nodemon      = require('gulp-nodemon');
-var webpack      = require('webpack-stream');
-var sass         = require('gulp-sass');
-var cssnano      = require('gulp-cssnano');
-var sourcemaps   = require('gulp-sourcemaps');
-var autoprefixer = require('gulp-autoprefixer');
-var imagemin     = require('gulp-imagemin');
+var gulp           = require('gulp');
+var exec           = require('child_process').exec;
+var path           = require('path');
+var fs             = require('fs');
+var del            = require('del');
+var runSequence    = require('run-sequence');
+var watch          = require('gulp-watch');
+var browserSync    = require('browser-sync');
+var reload         = browserSync.reload;
+var nodemon        = require('gulp-nodemon');
+var webpack        = require('webpack-stream');
+var concat         = require('gulp-concat');
+var uglify         = require('gulp-uglify');
+var sass           = require('gulp-sass');
+var cssnano        = require('gulp-cssnano');
+var sourcemaps     = require('gulp-sourcemaps');
+var autoprefixer   = require('gulp-autoprefixer');
+var imagemin       = require('gulp-imagemin');
+var mainBowerFiles = require('main-bower-files');
+var rename         = require('gulp-rename');
 
 
 gulp.task('browser-sync', function() {
@@ -40,11 +46,60 @@ gulp.task('nodemon', function() {
 gulp.task('webpack', function() {
   return gulp.src('src/app.js')
     .pipe(webpack(require('./webpack.config.js')))
-    .pipe(gulp.dest('public/scripts/'));
+    .pipe(gulp.dest('public/scripts'));
 });
 
 
 gulp.task('webpack-watch', ['webpack'], reload);
+
+
+gulp.task('clear-bower', function () {
+  return del(['src/assets/scripts/vendor', 'src/assets/styles/vendor']);
+});
+
+
+gulp.task('build-bower-js', function() {
+  return gulp.src(mainBowerFiles('**/*.js'))
+    .pipe(gulp.dest('src/assets/scripts/vendor'));
+});
+
+
+gulp.task('concat-bower-js', function() {
+  return gulp.src('src/assets/scripts/vendor/*.js')
+    .pipe(uglify())
+    .pipe(concat('vendor.bundle.js'))
+    .pipe(gulp.dest('public/scripts'));
+});
+
+
+var importRule = '@import ';
+
+
+gulp.task('build-bower-sass', function() {
+  return gulp.src(mainBowerFiles('**/*.{css,scss}'))
+    .pipe(rename(function(path) {
+      importRule += "'" + path.basename + "', ";
+      path.basename = '_' + path.basename;
+      path.extname = ".scss";
+    }))
+    .pipe(gulp.dest('src/assets/styles/vendor'));
+});
+
+
+gulp.task('bower-sass-manifest', function() {
+  importRule = importRule.replace(/,\s*$/, '');
+  importRule += ';';
+  return fs.writeFile('src/assets/styles/vendor/_vendor.scss', importRule, function(err) {
+    if(err) {
+      return console.log(err);
+    }
+  });
+});
+
+
+gulp.task('bower', function() {
+  runSequence('clear-bower', 'build-bower-js', 'concat-bower-js', 'build-bower-sass', 'bower-sass-manifest');
+});
 
 
 gulp.task('sass', function() {
@@ -66,7 +121,7 @@ gulp.task('sass', function() {
     }))
     .pipe(cssnano())
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('public/styles/'))
+    .pipe(gulp.dest('public/styles'))
     .pipe(browserSync.stream());
 });
 
@@ -88,7 +143,7 @@ gulp.task('images', function() {
 });
 
 
-var build = ['webpack', 'sass', 'images'];
+var build = ['webpack', 'bower', 'sass', 'images'];
 
 
 gulp.task('watch', function(){

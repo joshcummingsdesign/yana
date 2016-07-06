@@ -1,0 +1,38 @@
+{
+  "name": "yana",
+  "homepage": "https://bitbucket.org/madebygrizzly/grizzly-jekyll#readme",
+  "authors": [
+    "Josh Cummings <hello@joshcummingsdesign.com>"
+  ],
+  "description": "Yana - Yet another notes app. Built with AngularFire.",
+  "license": "MIT",
+  "dependencies": {
+    "iCheck": "icheck#1.0.2",
+    "chosen": "1.6.1",
+    "angular-chosen-localytics": "1.4.2"
+  },
+  "overrides": {
+    "jquery": {
+      "ignore": true
+    },
+    "angular": {
+      "ignore": true
+    },
+    "iCheck": {
+      "main": [
+        "./icheck.js",
+        "./skins/minimal/minimal.css"
+      ]
+    },
+    "chosen": {
+      "main": [
+        "./chosen.jquery.js",
+        "./chosen.css"
+      ]
+
+    },
+    "angular-chosen-localytics": {
+      "main": "./dist/angular-chosen.js"
+    }
+  }
+}

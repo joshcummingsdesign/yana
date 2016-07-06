@@ -4,10 +4,12 @@ Yana - Yet another notes app. Built with AngularFire.
 ## Dependencies
 * node 5.11.1
 * npm 3.8.6
+* bower 1.7.9
 
 ## Getting Started
 1. Run `npm install`
-2. Run `gulp watch`
+2. Run `bower install`
+3. Run `gulp watch`
 
 ## Sourcemaps
 1. Open Chrome Dev Tools
