@@ -2,6 +2,7 @@
 =                   Forms                   =
 ============================================*/
 
+
 /*----------  Basic Input Styling  ----------*/
 
 input, textarea, select {
@@ -25,11 +26,6 @@ input, textarea, select {
 textarea {
   padding: 1.5rem;
   line-height: 1.5em;
-}
-
-select {
-  background: url('../images/check.svg') calc(100% - 12px) center no-repeat;
-  background-size: 25px auto;
 }
 
 
@@ -146,11 +142,11 @@ select {
         border-right: 0.4rem solid $light-grey;
         display: inline-block;
         position: absolute;
-        top: 50%;
+        top: 55%;
         left: 50%;
         background: none;
         transform: translate(-50%, -80%) rotate(135deg);
-        transition: all 0.5s $easing;
+        transition: transform $time $easing, top $time $easing;
 
         @include breakpoint($large) {
           border-top: 4px solid $light-grey;
@@ -169,8 +165,7 @@ select {
 
   &.chosen-with-drop .chosen-single > div > b {
     transform: translate(-50%, -80%) rotate(-45deg);
-    top: 70%;
-    transition: all 0.5s $easing;
+    top: 62%;
   }
 
   &.chosen-with-drop {

@@ -1,11 +1,10 @@
-angular.module('yana', ['ngRoute', 'firebase']);
+angular.module('yana', ['ngRoute', 'firebase', 'localytics.directives']);
 
 // Database
 require('./database');
 
 // Directives
 require('./directives/icheck.js');
-require('./directives/chosen.js');
 
 // Factories
 require('./factories/auth.js');
