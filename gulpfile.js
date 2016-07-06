@@ -98,7 +98,7 @@ gulp.task('bower-sass-manifest', function() {
 
 
 gulp.task('bower', function() {
-  runSequence('clear-bower', 'build-bower-js', 'concat-bower-js', 'build-bower-sass', 'bower-sass-manifest');
+  runSequence('clear-bower', 'build-bower-js', 'concat-bower-js', 'build-bower-sass', 'bower-sass-manifest', 'sass');
 });
 
 
@@ -143,7 +143,7 @@ gulp.task('images', function() {
 });
 
 
-var build = ['webpack', 'bower', 'sass', 'images'];
+var build = ['webpack', 'bower', 'images'];
 
 
 gulp.task('watch', function(){

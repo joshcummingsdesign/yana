@@ -25,11 +25,7 @@
       ]
     },
     "chosen": {
-      "main": [
-        "./chosen.jquery.js",
-        "./chosen.css"
-      ]
-
+      "main": "./chosen.jquery.js"
     },
     "angular-chosen-localytics": {
       "main": "./dist/angular-chosen.js"
