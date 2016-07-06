@@ -32,11 +32,11 @@ Yana - Yet another notes app. Built with AngularFire.
 * Gulp comiples all webpack js to `public/styles/app.bundle.js`
 
 ## Bower
-* After installing a dependency with bower, add the files you need to overrides in bower.json
+* After installing a dependency with bower, add the files you need to overrides in `bower.json`
 * Run `gulp bower` to compile vendor assets automatically
-* All js files in overrides in bower.json get compiled to `src/assets/scripts/vendor`
+* All js files in overrides in `bower.json` get compiled to `src/assets/scripts/vendor`
 * Gulp compiles all bower js to `public/styles/vendor.bundle.js`
-* All css and sass files in overrides in bower.json get compiled to `src/assets/styles/vendor`
+* All css and sass files in overrides in `bower.json` get compiled to `src/assets/styles/vendor`
 
 ## Sass
 * All styles should be written as sass (.scss) in `src/assets/styles`
