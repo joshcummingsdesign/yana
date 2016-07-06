@@ -6,7 +6,7 @@
 
 /*==========  Breakpoints  ==========*/
 
-// update allows for setting min or max width, defaults to min-width
+// update allows for setting min or max width, defaults to min-width 
 // for backwards compatability
 
 @mixin breakpoint($point, $minOrMax: min-width) {
@@ -45,14 +45,22 @@
 
 @mixin vertical-center($position: relative) {
 	position: $position;
-	top: 50%;
+	top: 50% !important;
 	transform: translateY(-50%);
 }
 
-@mixin center-center($position: absoulte) {
+@mixin horz-center($position: relative) {
 	position: $position;
-	top: 50%;
-	left: 50%;
+	left: 50% !important;
+	transform: translateX(-50%);
+}
+
+@mixin center-center($position: relative) {
+	position: $position;
+	top: 50% !important;
+	left: 50% !important;
+	right: auto !important;
+	bottom: auto !important;
 	transform: translate(-50%, -50%);
 }
 
@@ -73,7 +81,7 @@
 
 
 /*==========  Backface Visibility Fix, apply to elements with flicker bug on transform  ==========*/
-@mixin backface($visibility: hidden) {
+@mixin backface($visibility: hidden){
   -webkit-backface-visibility: $visibility;
   -ms-backface-visibility:     $visibility;
 }
